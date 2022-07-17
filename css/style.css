@@ -79,18 +79,6 @@ html {
   color: black;
   background-color: lightgreen;
 }
-/*******************
-***** TIMER ********
-********************/
-.timerLabel { 
-  font-size: 1.2rem;
-  margin-top: 1.5%;
-}
-
-.gameTimer { 
-  font-size: 2rem;
-  margin-top: 0.3%;
-}
 
 /***************
 ****** IMAGES ***
