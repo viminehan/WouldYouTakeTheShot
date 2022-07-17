@@ -16,7 +16,7 @@ function loadNextPage(page) {
     loadingImage.style.display = "block";
     setTimeout(() => { 
         window.location = page;
-    }, 1000);
+    }, 600);
 }
  //Move from index.html to instructions.html
 if (document.URL.includes("index.html")) {
