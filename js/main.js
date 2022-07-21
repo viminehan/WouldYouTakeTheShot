@@ -248,12 +248,3 @@ if (document.URL.includes("scenarioseven.html")) {
 if (document.URL.includes("results.html")) {
  console.log(`Commands Followed: ${commandsFollowed}, Commands Disobeyed: ${commandsDisobeyed}, Intel Followed: ${intelFollowed}, Intel Disobeyed: ${intelDisobeyed}`);
 }
-/*******************
- ***** BACKGROUND ****
-********************/
-
-/* html { 
-  background: rgb(111,16,16);
-background: radial-gradient(circle, rgba(111,16,16,1) 0%, rgba(255,255,255,0) 100%);
-}
-*/ 
