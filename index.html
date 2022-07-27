@@ -16,11 +16,46 @@
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	</head>
 	<body class="centerCenter">
-		<h1> Would you take the shot? </h1>
-		<h2> How to operate </h2>
-		<p> This is a description that explains the simulation. </p>
-		<span> Warning: This game may disturb some players. If you experience PTSD or are concerned, do not play. </span>
-		<p class="bigButton indexPlayButton" id="playButton"> START </p>
+
+		<!-- Home Page -->
+		<div id="homePage" class="centerCenter homePageClass widthLimit90">
+			<h1 class="widthLimit90" > Would you take the shot? </h1>
+			<h2 class="widthLimit90"> About the Simulation </h2>
+			<p class="homeTopText widthLimit90"> As a military sniper, you have to make hard decisions with limited information. </p>
+			<p class="homeText widthLimit90"> You will be given scenarios and you will need to decide if you shoot your target, or hold your fire. </p>
+			<p class="homeText widthLimit90">Upon completion, you will be shown an analysis of your decisions. </p>
+			<span class="homeDisclaimer widthLimit90"> Warning: This game may disturb some players. If you experience PTSD or are concerned, do not play. </span>
+			<p class="bigButton indexPlayButton" id="playButton"> START </p>
+		</div>
+
+		<!-- Scenarios Page -->
+		<div id="scenariosPage" class="scenariosPageClass gamePage centerCenter"> 
+			<h1 class="scenarioTitle widthLimit90"> Instructions </h1>
+			<p class="scenarioText widthLimit90"> You will be presented a scenario here. You may then choose to either 'Take the Shot' or 'Hold your Fire'.
+				<br> 
+				<br> 
+				<br> Assume the following:
+				<br> 1) You will not be penalized for any action you take.
+				<br> 2) You have no alternative actions. 
+				<br> 3) All information given to you is accurate.
+				<br>
+				<br>
+				<br> Press 'Take the Shot' or 'Hold your Fire' one to begin.
+			<p class="scenarioTextLineTwo widthLimit90"> </p>
+			</p>
+			<img src="assets/imageScenes/instructions.png" class="gameImage gamePage scenarioImage">
+			<img src="assets/imageComponents/Cog.gif" class="loadingImage">
+			<p class="takeShot gameButton scenarioTakeShotButton "> Take the Shot </p>
+			<p class="holdFire gameButton scenarioHoldFireButton"> Hold your Fire </p>
+			<p class="exitButton"> Return Home </p>
+		</div>
+
+		<!-- Results Page -->
+		<div id="resultsPage" class="resultsPageClass gamePage centerCenter"> 
+			<h1 class="widthLimit90"> Results </h1>
+			<p class="widthLimit90"> The results go here. </p>
+		</div>
+
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
