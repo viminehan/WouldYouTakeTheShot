@@ -111,70 +111,70 @@ function selectNewScenario() {
     if (currentScenario == 1) {
         scenarioTitle = 'Scenario One';
         scenarioText = 'You are perched on the roof of a 10-story building, tasked with providing cover for a squad of soldiers on the ground. They get into a firefight and you target an enemy combatant who is firing on your allies.';
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S1.png"
         hostilesKilled++;
     } if (currentScenario == 2) {
         scenarioTitle = 'Scenario Two';
         scenarioText = 'You move your scope to search for a new target and pass over a friendly solider that you are charged with protecting. ';
-        gameImageSrc = "";  
+        gameImageSrc = "assets/imageScenes/S2.png";  
         innocentsKilled++;
     } if (currentScenario == 3) { 
         scenarioTitle = 'Scenario Three';
         scenarioText = 'You notice an enemy combatant and line them up in your sights, but notice that they are cowering behind cover and are not actively shooting at your allies.';
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S3.png";
     } if (currentScenario == 4) { 
         scenarioTitle = 'Scenario Four';
         scenarioText = 'An explosion kicks up a massive cloud of dust and it is hard to see the battlefield. You can make out the outline of a solider, but you are only about eighty-percent (80%) certain that it is an enemy combatant.';
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S4.png";
     } if (currentScenario == 5) { 
         scenarioTitle = 'Scenario Five';
         scenarioText = 'The dust settles and the battle is over. The enemy has been eliminated and your forces suffered minimal casualties. You see a lone military-aged male watching from a 5th-story balcony. He makes a phone call.';
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S5.png";
     } if (currentScenario == 6) {
         scenarioTitle = 'Scenario Six';
         scenarioText = "Your team advances through the city and you move to a new building. When you kick down the door of an apartment, a young woman in a floral dress screams at you in a language you don't understand. She is holding a knife.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S6.png";
     } if (currentScenario == 7) {
         scenarioTitle = 'Scenario Seven';
         scenarioText = "You take up your new position in the apartment. Your allies are moving up the street. You spot a military-aged male in a sidestreet, holding an assault rifle.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S7.png";
     } if (currentScenario == 8) {
         scenarioTitle = 'Scenario Eight';
         scenarioText = "Your presence in this place is not welcome. Civilians in second-floor apartments hurl curse words and stones at your allies.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S8.png";
     } if (currentScenario == 9) {
         scenarioTitle = 'Scenario Nine';
         scenarioText = "You spot movement on the roof of another building, an enemy combatant wielding a rocket launcher is taking aim at your troops.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S9.png";
         hostilesKilled++;
     } if (currentScenario == 10) {
         scenarioTitle = 'Scenario Ten';
         scenarioText = "The team creeps up the main street. A women with a child close by, approaches your allies - it appears she is saying something. Her hand is closed around something.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S10.png";
     } if (currentScenario == 11) {
         scenarioTitle = 'Scenario Eleven';
         scenarioText = "Your team reaches the target location and starts to assemble cover. Outside an old car carrying two passengers, travels at speed down the road towards the building.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S11.png";
     } if (currentScenario == 12) {
         scenarioTitle = 'Scenario Twelve';
         scenarioText = "You spot an enemy sniper who has lined you up in their sights. Taking the shot would risk being fired upon yourself, but holding your fire and taking cover could mean that the sniper repositions and targets your team.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S12.png";
         hostilesKilled++;
     } if (currentScenario == 13) {
         scenarioTitle = 'Scenario Thirteen';
         scenarioText = "A crowd of civilian protestors marches down the street towards the target location.. Amongst their ranks you spot a man obscuring an explosive. Taking the shot may result in the death of a civilian if they get in the way.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S13.png";
         hostilesKilled++;
     } if (currentScenario == 14) {
         scenarioTitle = 'Scenario Fourteen';
         scenarioText = "A woman in the crowd draws a rifle and starts firing at your perch. She is using another woman as a bodyshield. Taking the shot would mean killing both the combatant and the innocent woman.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S14.png";
         hostilesKilled++;
         innocentsKilled++;
     } if (currentScenario == 15) { 
         scenarioTitle = 'Scenario Fifteen';
         scenarioText = "The mission is almost complete. On the ground level, of a home reduced to rubble - you spot a young man, clutching the body of his bride.";
-        gameImageSrc = "";
+        gameImageSrc = "assets/imageScenes/S15.png";
     } if (currentScenario == 16) {
         console.log('End of Scenarios...');
         moveToResults();
