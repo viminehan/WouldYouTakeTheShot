@@ -7,11 +7,20 @@ let scenarioTitle = "";
 let scenarioText = "";
 let gameImageSrc = "";
 
-let shotsTaken = 0;
-let shotsHeld = 0;
-
 let gameImage = document.querySelector(".gameImage");
 let loadingImage = document.querySelector(".loadingImage");
+
+let gameBackground  = document.querySelector(".gameBody");
+
+//Shot Selection Detection
+let wasShotTaken = false;
+
+//Tracked Game Statistics
+let shotsTaken = 0;
+let shotsHeld = 0;
+let hostilesKilled = -1;
+let innocentsKilled = 0;
+let unknownsKilled = 0;
 
 /*************************
  NAVIGATION
@@ -22,6 +31,7 @@ let loadingImage = document.querySelector(".loadingImage");
  function playButtonClick() {
     document.querySelector(".homePageClass").style.display = 'none';
     document.querySelector(".scenariosPageClass").style.display = 'flex';
+    loadNextScenario();
 };
 
 //Exit button to home
@@ -43,8 +53,14 @@ function returnHome() {
     gameImage.style.display = "none";
     loadingImage.style.display = "flex";
     setTimeout(() => { 
-        incrementShotsTaken();
+        if (currentScenario >= 1) {
+            incrementShotsTaken();
+            if (currentScenario > 2 && currentScenario !== 9 && currentScenario !== 12 && currentScenario !== 13 && currentScenario !== 14) {
+                randomIncrement();
+            }
+        }
         loadNextScenario();
+        updateBackground();
         gameImage.style.display = "flex";
         loadingImage.style.display = "none";
     }, 600); 
@@ -72,13 +88,22 @@ function loadNextScenario() {
     document.querySelector('.gameImage').src = gameImageSrc;
 
     reportValues();
+    resetChoiceSelection();
 };
+
+//Reseting Choise Selection
+function resetChoiceSelection () {
+    wasShotTaken = false;
+}
 
 //Report Values
 function reportValues() {
     console.log(`------- VALUES AS OF STARTING: Scenario ${currentScenario} -------`);
     console.log(`Shots Taken: ${shotsTaken}`);
     console.log(`Shots Held: ${shotsHeld}`);
+    console.log(`Known Hostiles Killed: ${hostilesKilled}`);
+    console.log(`Known Innocents Killed: ${innocentsKilled}`);
+    console.log(`Unknown Actors Killed: ${unknownsKilled}`);
 ;} 
 
 //Selecting New Scenario
@@ -86,11 +111,13 @@ function selectNewScenario() {
     if (currentScenario == 1) {
         scenarioTitle = 'Scenario One';
         scenarioText = 'You are perched on the roof of a 10-story building, tasked with providing cover for a squad of soldiers on the ground. They get into a firefight and you target an enemy combatant who is firing on your allies.';
-        gameImageSrc = ""; 
+        gameImageSrc = "";
+        hostilesKilled++;
     } if (currentScenario == 2) {
         scenarioTitle = 'Scenario Two';
         scenarioText = 'You move your scope to search for a new target and pass over a friendly solider that you are charged with protecting. ';
         gameImageSrc = "";  
+        innocentsKilled++;
     } if (currentScenario == 3) { 
         scenarioTitle = 'Scenario Three';
         scenarioText = 'You notice an enemy combatant and line them up in your sights, but notice that they are cowering behind cover and are not actively shooting at your allies.';
@@ -119,8 +146,9 @@ function selectNewScenario() {
         scenarioTitle = 'Scenario Nine';
         scenarioText = "You spot movement on the roof of another building, an enemy combatant wielding a rocket launcher is taking aim at your troops.";
         gameImageSrc = "";
+        hostilesKilled++;
     } if (currentScenario == 10) {
-        scenarioTitle == 'Scenario Ten';
+        scenarioTitle = 'Scenario Ten';
         scenarioText = "The team creeps up the main street. A women with a child close by, approaches your allies - it appears she is saying something. Her hand is closed around something.";
         gameImageSrc = "";
     } if (currentScenario == 11) {
@@ -131,14 +159,18 @@ function selectNewScenario() {
         scenarioTitle = 'Scenario Twelve';
         scenarioText = "You spot an enemy sniper who has lined you up in their sights. Taking the shot would risk being fired upon yourself, but holding your fire and taking cover could mean that the sniper repositions and targets your team.";
         gameImageSrc = "";
+        hostilesKilled++;
     } if (currentScenario == 13) {
         scenarioTitle = 'Scenario Thirteen';
         scenarioText = "A crowd of civilian protestors marches down the street towards the target location.. Amongst their ranks you spot a man obscuring an explosive. Taking the shot may result in the death of a civilian if they get in the way.";
         gameImageSrc = "";
+        hostilesKilled++;
     } if (currentScenario == 14) {
         scenarioTitle = 'Scenario Fourteen';
         scenarioText = "A woman in the crowd draws a rifle and starts firing at your perch. She is using another woman as a bodyshield. Taking the shot would mean killing both the combatant and the innocent woman.";
         gameImageSrc = "";
+        hostilesKilled++;
+        innocentsKilled++;
     } if (currentScenario == 15) { 
         scenarioTitle = 'Scenario Fifteen';
         scenarioText = "The mission is almost complete. On the ground level, of a home reduced to rubble - you spot a young man, clutching the body of his bride.";
@@ -146,14 +178,42 @@ function selectNewScenario() {
     } if (currentScenario == 16) {
         console.log('End of Scenarios...');
         moveToResults();
-    } else {
-        console.log('selectNewScenario() Error');
-    };
+    } else {};
 };
 
 function moveToResults() {
     console.log('Moved to results.');
-}
+    document.querySelector(".scenariosPageClass").style.display = 'none';
+    document.querySelector("#resultsPage").style.display = 'flex';
+    showResults();
+};
+
+//Increment random value
+function randomIncrement() { 
+let randInc = 0;
+randInc = Math.random();
+console.log(`This Random Inc is: ${randInc}`);
+
+unknownsKilled++;
+
+    if (randInc > 0.5) {
+        hostilesKilled++;
+        console.log(`A new hostile was killed.`);
+    } else if (randInc < 0.5) { 
+        innocentsKilled++;
+        console.log(`A new innocent was killed.`);
+    } else {
+        console.log('ERROR: randomIncrement() Broke.');
+    };
+
+
+};
+
+function showResults() {
+    document.querySelector('.span1').innerText = `You fired your sniper ${shotsTaken} times.`;
+    document.querySelector('.span2').innerText = `You slaughtered ${hostilesKilled} hostile combatants.`;
+    document.querySelector('.span3').innerText = `You ended the lives of ${innocentsKilled} innocent civilians.`
+};
 
 /***********************
  INCREMENTING VALUES
@@ -175,4 +235,43 @@ function incrementShotsTaken() {
 function incrementShotsHeld() { 
     if (currentScenario > 0) { 
         shotsHeld++; } else {}; 
+};
+
+/**************************************************
+ BACKGROUND HANDLING
+***************************************************/
+function updateBackground () {
+    //Update background on shot taken.
+    console.log('Updating Background..')
+    if (shotsTaken == 1) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 100%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 2) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 92%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 3) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 85%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 4) { 
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 78%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 5) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 71%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 6) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 64%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 7) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 57%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 8) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 50%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 9) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 43%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 10) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 35%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 11) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 28%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 12) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 21%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 13) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 14%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 14) {
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 7%, rgba(111,16,16,1) 100%)";
+    } else if (shotsTaken == 15) { 
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(111,16,16,1) 100%)";
+    } else {};
 };
