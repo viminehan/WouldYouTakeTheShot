@@ -42,6 +42,27 @@ function returnHome() {
         location.reload();
     } else {};
 };
+
+//More from Violet button
+document.querySelector('.devButton').addEventListener('click', devButtonClick);
+
+function devButtonClick() {
+    window.location.href = "https://github.com/viminehan/WouldYouTakeTheShot";
+};
+
+//Restart from Results
+document.querySelector('.restartButton').addEventListener('click', restartSim);
+
+function restartSim() { 
+    returnHome();
+}
+
+//Github from Results
+document.querySelector('.resultTag').addEventListener('click', devResultsClick);
+
+function devResultsClick() {
+    devButtonClick();
+};
 /******************
  SCENARIO HANDLING
  ****************/
@@ -244,7 +265,7 @@ function updateBackground () {
     //Update background on shot taken.
     console.log('Updating Background..')
     if (shotsTaken == 1) {
-        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 100%, rgba(111,16,16,1) 100%)";
+        gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 95%, rgba(111,16,16,1) 100%)";
     } else if (shotsTaken == 2) {
         gameBackground.style.background = "radial-gradient(circle, rgba(255,255,255,0) 92%, rgba(111,16,16,1) 100%)";
     } else if (shotsTaken == 3) {
